@@ -14,7 +14,6 @@ class Login extends React.Component {
             This is the Login Page!<br /><br />
 
             <button onClick={this.onClickHandler}>Login</button><br /><br />
-            <Link to="/create_account">Create Account</Link>
         </div>
     );
   }
