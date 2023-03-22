@@ -3,7 +3,6 @@ import React from 'react';
 import Nav from './components/Nav';
 import { AddTeam,
   Chat,
-  CreateAccount,
   EditProfile,
   EditTeam,
   Feed,
@@ -22,7 +21,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Feed />} />
         <Route path="/chat" element={<Chat />} />
-        <Route path="/create_account" element={<CreateAccount />} />
         <Route path="/edit_profile" element={<EditProfile />} />
         <Route path="/edit_team/:teamId" element={<EditTeam />} />
         <Route path="/login" element={<Login />} />
