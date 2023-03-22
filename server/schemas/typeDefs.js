@@ -6,17 +6,6 @@ const typeDefs = gql`
     name: String
   }
 
-  type Team {
-    _id: ID
-    captain: User
-    members: [User]
-    sport: String
-    state: String
-    city: String
-    team_zip_code: Int
-    password: String
-  }
-
   type User {
     _id: ID
     currently_available: Boolean
@@ -26,6 +15,17 @@ const typeDefs = gql`
     username: String
     password: String
     teams: [Team]
+  }
+
+  type Team {
+    _id: ID
+    captain: User
+    members: [User]
+    sport: String
+    state: String
+    city: String
+    team_zip_code: Int
+    password: String
   }
 
   type Auth {
