@@ -13,12 +13,6 @@ const teamSchema = new mongoose.Schema({
     ref: 'User',
     required: false
   },
-  members: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  ],
   sport: {
     type: String,
     required: true,
@@ -38,7 +32,13 @@ const teamSchema = new mongoose.Schema({
     type: Number,
     required: true,
     min: 00000
-  }
+  },
+  members: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
 })
 const Team = mongoose.model('Team', teamSchema);
 

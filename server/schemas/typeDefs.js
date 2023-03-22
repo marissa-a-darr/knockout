@@ -28,6 +28,11 @@ const typeDefs = gql`
     teams: [Team]
   }
 
+  type Auth {
+    token: ID!
+    user: User
+  }
+
   type Query {
     users: [User]
     user(username: String!): User
@@ -38,12 +43,13 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): Auth
-    login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    addUser(username: String!, password: String!, state: String, zip: Int, city: String): Auth
+    login(username: String!, password: String!): Auth
+    addSport(name: String!): Sport
+    addTeam(name: String!, sport: String, state: String, city: String, team_zip_code: Int): Team
+    leaveTeam(teamId: ID!): Team
+    removeTeam(teamId: ID!): Auth
+    removeSport(sportId: ID!): Auth
   }
 `;
 
