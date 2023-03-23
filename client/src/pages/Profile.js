@@ -34,18 +34,17 @@ const Profile = () => {
     <div className="container" style={myStyle}>
 
 
-        <Link to="/edit_profile" color="#000000"><Button>Edit Profile</Button></Link><br /><br />
 
         <Text fontSize={"50px"} color={"gold"}>Welcome Back, {User}!</Text>
 
 
        <Image src={Profile} alt="Profile Picture" height={"auto"} width={"auto"} border={"2px solid gold"}/>
 
-<Textarea color={"White"}>This is my bio example.
+<Text color={"White"} fontSize={"20px"} border={"2px solid white"}>This is my bio example.
 
 
-</Textarea>
-
+</Text>
+<br />
 
         <Text fontSize={"30px"} color={"white"}> My Teams: </Text>
        
@@ -78,6 +77,7 @@ const Profile = () => {
     </Tbody>
   </Table>
 </TableContainer>
+<Link to="/edit_profile" color="#000000"><Button>Edit Profile</Button></Link><br /><br />
 
         </div>
    

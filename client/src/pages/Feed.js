@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 const myStyle = {
-  color: "#fffff",
+  color: "#ffffff",
   backgroundColor: "#000000",
   padding: "20px",
   fontSize: "20px",
