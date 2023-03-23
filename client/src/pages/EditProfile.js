@@ -8,6 +8,7 @@ color: "white",
   fontFamily: "Lucida Console, Monaco, monospace",
 height: "100vh",
 
+
 }
 
 const EditProfile = () => {
