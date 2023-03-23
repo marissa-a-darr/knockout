@@ -5,8 +5,8 @@ const navStyle = {
   color: "#fffff",
   backgroundColor: "#373e98",
   padding: "5px",
-  fontSize: "25px",
-  fontFamily: "Lucida Console, Monaco, monospace"
+  fontSize: "30px",
+  fontFamily: "Lucida Console, Monaco, monospace",
 
 }
 

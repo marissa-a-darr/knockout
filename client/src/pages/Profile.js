@@ -5,12 +5,10 @@ import User from './User';
     color: "#000000",
     backgroundColor: "#373e98",
     padding: "20px",
-    fontSize: "20",
-    fontFamily: "Lucida Console, Monaco, monospace"
-
-    
-
+    fontSize: "20px",
+    fontFamily: "Lucida Console, Monaco, monospace",
   }
+  
 
 const Profile = () => {
   return (
@@ -22,7 +20,7 @@ const Profile = () => {
         <div className="welcomeback">Welcome Back, {User}!</div>
 
 
-        <div className="profilepic"><img src={Profile} alt="Profile Picture" />Profile picture goes here!</div>
+        <div className="profilepic"><img src={Profile} alt="Profile Picture" /></div>
 
         <div className="myteams">List of teams goes here:
        <li>
