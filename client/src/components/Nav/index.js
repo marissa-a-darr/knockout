@@ -13,16 +13,7 @@ const navStyle = {
 
 }
 
-const headerStyle ={
-  padding: "220px",
-  fontSize: "100px",
-  margin: "auto",
-  textAlign: "center",
-textShadow: "#FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #CEB92C 0px 0px 20px, #CEB92C 0px 0px 30px, #CEB92C 0px 0px 50px, #CEB92C 0px 0px 60px, #CEB92C 0px 0px 100px",
-fontFamily: "Lucida Console, Monaco, monospace",
 
-
-}
 
 function Nav() {
 
@@ -58,14 +49,14 @@ function Nav() {
 
   return (
     <header className="header">
-      <h1 style={headerStyle}>
+      <h1>
         <Link to="/" >
-      <img src={Logo} />
+      <img src={Logo}  class="center"/>
         </Link>
 
       </h1>
 
-      <nav style={navStyle}>
+      <nav style={navStyle} >
         {showNavigation()}
       </nav>
     </header>
