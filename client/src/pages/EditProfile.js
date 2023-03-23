@@ -7,7 +7,7 @@ color: "white",
   padding: "20px",
 
   fontFamily: "Lucida Console, Monaco, monospace",
-height: "100%",
+height: "100vh",
 
 }
 
