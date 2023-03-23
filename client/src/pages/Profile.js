@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import User from './User';
+//style for profile page
   const myStyle = {
-    color: "#000000",
-    backgroundColor: "#373e98",
+    color: "#FFFFFF",
+    backgroundColor: "#000000",
     padding: "20px",
     fontSize: "20px",
     fontFamily: "Lucida Console, Monaco, monospace",
+
   }
   
 

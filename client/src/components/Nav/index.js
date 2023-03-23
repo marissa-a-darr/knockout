@@ -1,23 +1,27 @@
 import React from "react";
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import Logo from "../../logo.jpg";
+
 const navStyle = {
   color: "#fffff",
-  backgroundColor: "#373e98",
+  backgroundColor: "#000000",
   padding: "5px",
   fontSize: "30px",
   fontFamily: "Lucida Console, Monaco, monospace",
 
+
 }
 
 const headerStyle ={
-  backgroundColor: "#373e98",
-  padding: "50px",
+  padding: "220px",
   fontSize: "100px",
   margin: "auto",
   textAlign: "center",
 textShadow: "#FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, #CEB92C 0px 0px 20px, #CEB92C 0px 0px 30px, #CEB92C 0px 0px 50px, #CEB92C 0px 0px 60px, #CEB92C 0px 0px 100px",
-fontFamily: "Lucida Console, Monaco, monospace"
+fontFamily: "Lucida Console, Monaco, monospace",
+
+
 }
 
 function Nav() {
@@ -53,11 +57,12 @@ function Nav() {
   }
 
   return (
-    <header>
+    <header className="header">
       <h1 style={headerStyle}>
         <Link to="/" >
-          Knockout <hr />
+      <img src={Logo} />
         </Link>
+
       </h1>
 
       <nav style={navStyle}>
