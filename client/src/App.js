@@ -30,6 +30,7 @@ function App() {
     <Router>
 
      <Routes>
+        <Route path="/" element={<Feed />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/edit_profile" element={<EditProfile />} />
