@@ -17,9 +17,6 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2.5.2",
-    "@emotion/react": "^11.10.6",
-    "@emotion/styled": "^11.10.6",
-    "framer-motion": "^10.8.5"
+    "@auth0/auth0-react": "^2.0.1"
   }
 }

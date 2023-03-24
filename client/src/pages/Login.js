@@ -9,9 +9,10 @@ const myStyle = {
   fontFamily: "Lucida Console, Monaco, monospace",
   height: "100vh"
 
-}
-class Login extends React.Component {
-
+//   onClickHandler() {
+//     Auth.login();
+//   }
+  
   onClickHandler() {
     Auth.login();
   }
@@ -27,4 +28,4 @@ class Login extends React.Component {
   }
 };
 
-export default Login;
+// export default Login;

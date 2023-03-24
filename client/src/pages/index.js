@@ -7,5 +7,18 @@ import Login from "./Login";
 import Profile from "./Profile";
 import Team from "./Team";
 import User from "./User";
-
-export { AddTeam, Chat, EditProfile, EditTeam, Feed, Login, Profile, Team, User };
+import LoginButton from "../components/Nav/LoginButton";
+import LogoutButton from "../components/Nav/LogoutButton";
+export {
+  AddTeam,
+  Chat,
+  EditProfile,
+  EditTeam,
+  Feed,
+  Login,
+  LoginButton,
+  LogoutButton,
+  Profile,
+  Team,
+  User,
+};
