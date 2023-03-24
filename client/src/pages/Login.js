@@ -8,14 +8,12 @@ const myStyle = {
   fontSize: "20px",
   fontFamily: "Lucida Console, Monaco, monospace",
   height: "100vh"
+};
 
-//   onClickHandler() {
-//     Auth.login();
-//   }
   
   onClickHandler() {
     Auth.login();
-  }
+  };
   
   render () {
     return (
@@ -25,7 +23,6 @@ const myStyle = {
             <button onClick={this.onClickHandler}>Login</button><br /><br />
         </div>
     );
-  }
-};
+  };
 
 // export default Login;

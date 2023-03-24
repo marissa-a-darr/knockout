@@ -22,9 +22,9 @@ import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
-  <> 
+   <>
     <Header></Header>
-    {/* <Nav /> */}
+    
     <ChakraProvider>
     <Router>
 
@@ -41,6 +41,7 @@ function App() {
       </Routes> 
     </Router>
     </ChakraProvider>
+    </>
   );
 }
 
