@@ -18,12 +18,15 @@ import {
 import AuthenticationButton from './components/Nav/testingAuth';
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ChakraProvider } from '@chakra-ui/react';
 
 function App() {
   return (
-  <> 
+   <>
+   <ChakraProvider>
     <Header></Header>
-    {/* <Nav /> */}
+    
+    
     <Router>
 
      <Routes>
@@ -38,12 +41,9 @@ function App() {
         <Route path="/user/:userId" element={<User />} />
       </Routes> 
     </Router>
-  </>
-    
-  
+    </ChakraProvider>
+    </>
   );
 }
-
-
 
 export default App;
