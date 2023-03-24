@@ -9,6 +9,7 @@ const myStyle = {
 
 }
 const Chat = () => {
+  console.log("this is the chat")
   return (
     <div className="container" style={myStyle}>
         This is the Chat Page!
