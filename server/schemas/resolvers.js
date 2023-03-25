@@ -8,7 +8,17 @@ const resolvers = {
       return User.find().populate('teams');
     },
     user: async (parent, { username }) => {
-      const user =  await User.findOne({ username });
+      let user =  await User.findOne({ username });
+      if (!user) {
+        user = await User.create({
+          username: username,
+          password: '',
+          state: '',
+          zip: null,
+          city: ''
+        });
+      }
+
       const teams = await Team.find({
         '_id': {
           $in: user.teams
@@ -27,7 +37,17 @@ const resolvers = {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
     },
     me: async (parent, { username }, context) => {
-      const user =  await User.findOne({ username });
+      let user =  await User.findOne({ username });
+      if (!user) {
+        user = await User.create({
+          username: username,
+          password: '',
+          state: '',
+          zip: null,
+          city: ''
+        });
+      }
+      
       const teams = await Team.find({
         '_id': {
           $in: user.teams
