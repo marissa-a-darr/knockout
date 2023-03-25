@@ -30,21 +30,15 @@ const AddTeamForm = () =>  {
       sport,
       state,
       city,
-      team_zip_code: Number(zip),
+      zip,
       captain: user.email
     }
     console.log(team);
-    try {
-      const { data } = await addTeam({
-        variables: team
-      });
-      
-      console.log(data);
-    } catch (err) {
-      console.log(err);
-    }
-    isSubmitting = false;
-    window.location.assign('/feed');
+    const { data } = await addTeam({
+      variables: team
+    });
+    console.log(data);
+    isSubmitting = false
   }
 
   return (

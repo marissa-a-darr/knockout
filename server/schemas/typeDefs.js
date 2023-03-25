@@ -19,6 +19,7 @@ const typeDefs = gql`
 
   type Team {
     _id: ID!
+    name: String
     sport: String
     state: String
     city: String
