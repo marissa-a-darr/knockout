@@ -2,7 +2,8 @@
 import React from "react";
 import { Link } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
-
+import { useQuery } from '@apollo/client';
+import MyTeamList from "./MyTeamList";
 import {
   Table,
   Thead,
@@ -54,39 +55,14 @@ const Profile = () => {
 <br />
 
         <Text fontSize={"30px"} color={"white"}> My Teams: </Text>
-       
-       <TableContainer>
-  <Table variant='simple' color={"white"}>
-  
-    <Thead>
-      <Tr>
-        <Th>Team Name</Th>
-        <Th>City</Th>
-        <Th>Captain Name</Th>
-      </Tr>
-    </Thead>
-    <Tbody>
-      <Tr>
-        <Td>Team Name 1 </Td>
-        <Td>City Name 1</Td>
-        <Td>Captain Name 1</Td>
-      </Tr>
-      <Tr>
-        <Td>Team Name 2</Td>
-        <Td>City Name 2</Td>
-        <Td>Captain Name 2</Td>
-      </Tr>
-      <Tr>
-        <Td>Team Name 3</Td>
-        <Td>City Name 3</Td>
-        <Td>Captain Name 3</Td>
-      </Tr>
-    </Tbody>
-  </Table>
-</TableContainer>
-<Link to="/edit_profile" color="#000000"><Button>Edit Profile</Button></Link><br /><br />
-
+       <MyTeamList></MyTeamList>
+       <Link to="/edit_profile" style={{ color: "#000000" }}>
+              <Button>Edit Profile</Button>
+            </Link>
+            <br />
+            <br />
         </div>
+       
    
   );
 };
