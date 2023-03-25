@@ -8,7 +8,14 @@ const resolvers = {
       return User.find().populate('teams');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('teams');
+      const user =  await User.findOne({ username });
+      const teams = await Team.find({
+        '_id': {
+          $in: user.teams
+        }
+      }).populate('captain').populate('members');
+      user.teams = teams;
+      return user;
     },
     sports: async () => {
       return Sport.find();
@@ -20,7 +27,14 @@ const resolvers = {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
     },
     me: async (parent, { username }, context) => {
-      return User.findOne({ username }).populate('teams');
+      const user =  await User.findOne({ username });
+      const teams = await Team.find({
+        '_id': {
+          $in: user.teams
+        }
+      }).populate('captain').populate('members');
+      user.teams = teams;
+      return user;
     },
   },
 

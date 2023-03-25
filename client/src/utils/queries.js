@@ -2,7 +2,7 @@ import { gql } from '@apollo/client';
 
 export const QUERY_MYTEAMS = gql`
   query getMyTeams {
-  me {
+  me() {
     username
     state
     zip
