@@ -34,10 +34,22 @@ const AddTeamForm = () =>  {
       captain: user.email
     }
     console.log(team);
-    const { data } = await addTeam({
-      variables: team
-    });
-    console.log(data);
+    try {
+      const { data } = await addTeam({
+        variables: {
+          name,
+          sport,
+          state,
+          city,
+          team_zip_code: Number(zip),
+          captain: user.email,
+        }
+      });
+      
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
     isSubmitting = false
   }
 

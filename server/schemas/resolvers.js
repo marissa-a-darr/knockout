@@ -55,6 +55,8 @@ const resolvers = {
       return sport;
     },
     addTeam: async (parent, { name, sport, state, city, team_zip_code, captain }, context) => {
+      console.log('I was hit!')
+      console.log(captain);
       let user = await User.findOne({ username: captain });
       if (!user) {
         user = await User.create({
