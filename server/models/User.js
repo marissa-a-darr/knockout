@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const {Schema} = mongoose;
 const userSchema = new mongoose.Schema({
@@ -30,7 +31,6 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: false,
-    minlength: 5
   },
   teams: [
     {

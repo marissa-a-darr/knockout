@@ -51,35 +51,39 @@ const resolvers = {
       return { token, user };
     },
     addSport: async (parent, { name }, context) => {
-      if (context.user) {
-        const sport = await Sport.create({ name });
-
-        return sport;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      const sport = await Sport.create({ name });
+      return sport;
     },
-    addTeam: async (parent, { name, sport, state, city, team_zip_code }, context) => {
-      if (context.user) {
-        const team = await Team.create({
-          name,
-          captain: context.user._id,
-          sport,
+    addTeam: async (parent, { name, sport, state, city, team_zip_code, captain }, context) => {
+      let user = await User.findOne({ username: captain });
+      if (!user) {
+        user = await User.create({
+          username: captain,
+          password: '',
           state,
-          city,
-          team_zip_code,
-          members: []
+          zip: team_zip_code,
+          city
         });
-
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $addToSet: { teams: team._id } }
-        );
-
-        return team;
       }
-      throw new AuthenticationError('You need to be logged in!');
+      
+      const team = await Team.create({
+        name,
+        sport,
+        state,
+        city,
+        team_zip_code,
+        captain: user._id,
+        members: []
+      });
+
+      await User.findOneAndUpdate(
+        { _id: user._id },
+        { $addToSet: { teams: team._id } }
+      );
+
+      return Team.findById(team._id).populate('captain').populate('members');
     },
-    leaveTeam: async (parent, { teamId }, context) => {
+    leaveTeam: async (parent, { teamId, username }, context) => {
       if (context.user) {
         const team = await Team.findOneAndUpdate(
           { _id: teamId },
