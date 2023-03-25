@@ -4,11 +4,11 @@ import EditProfile from "./EditProfile";
 import EditTeam from "./EditTeam";
 import Feed from "./Feed";
 import Login from "./Login";
+import LandingPage from "./LandingPage";
 import Profile from "./Profile";
 import Team from "./Team";
 import User from "./User";
-import LoginButton from "../components/Nav/LoginButton";
-import LogoutButton from "../components/Nav/LogoutButton";
+
 export {
   AddTeam,
   Chat,
@@ -16,8 +16,7 @@ export {
   EditTeam,
   Feed,
   Login,
-  LoginButton,
-  LogoutButton,
+  LandingPage,
   Profile,
   Team,
   User,

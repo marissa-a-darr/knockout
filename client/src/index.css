@@ -22,3 +22,18 @@ code {
 
 
 }
+
+.addTeamFormContainer {
+  margin: 30px;
+  padding: 20px;
+}
+
+.chakra-form-control {
+  margin-bottom: 12px;
+}
+
+.headerLogo {
+  width: 150px;
+  margin-bottom: -50px;
+  max-width: 150px;
+}

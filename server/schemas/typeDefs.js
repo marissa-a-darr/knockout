@@ -42,10 +42,10 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password: String!, state: String!, zip: Int!, city: String!): Auth
+    addUser(username: String!, password: String, state: String, zip: Int, city: String): Auth
     login(username: String!, password: String!): Auth
     addSport(name: String!): Sport
-    addTeam(name: String!, sport: String!, state: String!, city: String!, team_zip_code: Int!): Team
+    addTeam(name: String!, sport: String!, state: String!, city: String!, team_zip_code: Int!, captain: User): Team
     leaveTeam(teamId: ID!): Team
     removeTeam(teamId: ID!): Auth
     removeSport(sportId: ID!): Auth

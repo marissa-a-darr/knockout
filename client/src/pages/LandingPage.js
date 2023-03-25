@@ -1,5 +1,5 @@
 import React from "react";
-import AddTeamForm from "../components/AddTeamForm";
+import LoginButton from "../components/Nav/LoginButton";
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
@@ -9,12 +9,14 @@ const myStyle = {
   height: "100vh"
 
 }
-const AddTeam = () => {
+
+const Feed = () => {
   return (
     <div className="container" style={myStyle}>
-      <AddTeamForm />
+      <h1>Welcome to Knockout! Please Login</h1>
+      <LoginButton />
     </div>
   );
 };
 
-export default AddTeam;
+export default Feed;
