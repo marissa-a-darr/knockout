@@ -50,7 +50,8 @@ const AddTeamForm = () =>  {
     } catch (err) {
       console.log(err);
     }
-    isSubmitting = false
+    isSubmitting = false;
+    window.location.assign('/feed');
   }
 
   return (
