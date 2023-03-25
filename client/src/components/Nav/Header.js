@@ -8,7 +8,6 @@ import {
   EditProfile,
   EditTeam,
   Feed,
-  // Login,
   Profile,
   Team,
   User 
@@ -19,20 +18,20 @@ import {
 const Header = () => {
   return (
      <Router>
-   <NavBar>
-   <Routes>
-      <Route path="/feed" element={<Feed />} />
-      <Route path="/chat" element={<Chat />} />
-      <Route path="/edit_profile" element={<EditProfile />} />
-      <Route path="/edit_team/:teamId" element={<EditTeam />} />
-       {/* <Route path="/login" element={<Login />} />  */}
-       <Route path="/profile" element={<Profile />} />
-      <Route path="/team/:teamId" element={<Team />} />
-      <Route path="/add_team" element={<AddTeam />} />
-      <Route path="/user/:userId" element={<User />} />
-    </Routes>  
-    </NavBar>
-  </Router>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Feed />} />
+        <Route path="/feed" element={<Feed />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/edit_profile" element={<EditProfile />} />
+        <Route path="/edit_team/:teamId" element={<EditTeam />} />
+        {/* <Route path="/login" element={<Login />} />  */}
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/team/:teamId" element={<Team />} />
+        <Route path="/add_team" element={<AddTeam />} />
+        <Route path="/user/:userId" element={<User />} />
+      </Routes>  
+    </Router>
   )
 };
 
