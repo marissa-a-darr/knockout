@@ -19,11 +19,8 @@ const resolvers = {
     team: async (parent, { teamId }) => {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
     },
-    me: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
-      }
-      throw new AuthenticationError('You need to be logged in!');
+    me: async (parent, { username }, context) => {
+      return User.findOne({ username }).populate('teams');
     },
   },
 
@@ -83,54 +80,66 @@ const resolvers = {
 
       return Team.findById(team._id).populate('captain').populate('members');
     },
-    leaveTeam: async (parent, { teamId, username }, context) => {
-      if (context.user) {
-        const team = await Team.findOneAndUpdate(
-          { _id: teamId },
-          {
-            $pull: {
-              members: context.user._id,
-            },
+    joinTeam: async(parent, {teamdId, username}, context) => {
+      const user = await User.findOneAndUpdate(
+        { username: username },
+        { $addToSet: { teams: team._id }}
+      );
+
+      const team = await Team.findOneAndUpdate(
+        { _id: teamId },
+        {
+          $addToSet: {
+            members: user._id,
           },
-          {
-            new: true,
-            runValidators: true,
-          }
-        );
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
 
-        await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { teams: team._id }}
-        );
+      return User.findOne({ username }).populate('teams');
+    },
+    leaveTeam: async (parent, { teamId, username }, context) => {
+      const user = await User.findOneAndUpdate(
+        { username: username },
+        { $pull: { teams: team._id }}
+      );
 
-        return team;
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      const team = await Team.findOneAndUpdate(
+        { _id: teamId },
+        {
+          $pull: {
+            members: user._id,
+          },
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
+
+      return User.findOne({ username }).populate('teams');
     },
     removeTeam: async (parent, { teamId }, context) => {
-      if (context.user) {
-        const team = await Team.findOneAndDelete({
-          _id: teamId,
-        });
+      const team = await Team.findOneAndDelete({
+        _id: teamId,
+      });
 
-        const user = await User.findOneAndUpdate(
-          { _id: context.user._id },
-          { $pull: { teams: team._id } }
-        );
+      const user = await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { teams: team._id } }
+      );
 
-        const token = signToken(user);
+      const token = signToken(user);
   
-        return { token, user };
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      return { token, user };
     },
     removeSport: async (parent, { sportId }, context) => {
-      if (context.user) {
-        return Sport.findOneAndDelete(
-          { _id: sportId }
-        );
-      }
-      throw new AuthenticationError('You need to be logged in!');
+      return Sport.findOneAndDelete(
+        { _id: sportId }
+      );
     },
   },
 };
