@@ -1,25 +1,26 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const {Schema} = mongoose;
 const userSchema = new mongoose.Schema({
   currently_available : {
     type: Boolean,
-    default: true,
+    default: false,
     required: true
   },
   state: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   zip: {
     type: Number,
-    required: true,
+    required: false,
     min: 00000
   },
   city: {
     type: String,
-    trim: true,
+    trim: false,
     required: true
   },
   username: {
@@ -29,8 +30,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
-    minlength: 5
+    required: false,
   },
   teams: [
     {

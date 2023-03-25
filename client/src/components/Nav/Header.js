@@ -8,6 +8,7 @@ import {
   EditProfile,
   EditTeam,
   Feed,
+  LandingPage,
   Profile,
   Team,
   User 
@@ -20,7 +21,7 @@ const Header = () => {
      <Router>
       <NavBar />
       <Routes>
-        <Route path="/" element={<Feed />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/feed" element={<Feed />} />
         <Route path="/chat" element={<Chat />} />
         <Route path="/edit_profile" element={<EditProfile />} />

@@ -3,7 +3,7 @@ import {Box, Image} from "@chakra-ui/react";
 function Logo(props) {
   return (
     <Box{...props}>
-    <Image src="..\..\assets\images\knock (2).png" alt="logo"/>
+    <Image className="headerLogo" src={require("../../images/knock (2).png")} alt="logo"/>
 </Box>
 )
 }
