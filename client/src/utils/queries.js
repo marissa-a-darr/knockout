@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export const QUERY_MYTEAMS = gql`
-  query getMyTeams {
-  me() {
+query getMyTeams($username: String!) {
+  me(username: $username) {
     username
     state
     zip
