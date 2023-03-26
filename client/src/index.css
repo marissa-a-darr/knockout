@@ -38,7 +38,7 @@ code {
   max-width: 150px;
 }
 
-.addTeamContainer, .teamListContainer, .searchFormContainer {
+.addTeamContainer, .teamListContainer, .searchFormContainer, .mapContainer {
   margin: 20px 10px;
   padding: 20px;
   border: solid;
@@ -49,4 +49,9 @@ code {
   padding: 20px;
   border: solid 1px;
   border-radius: 12px;
+}
+
+#map {
+  margin-top: 40px;
+  height: 400px;
 }

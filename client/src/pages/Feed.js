@@ -4,6 +4,7 @@ import { Grid, GridItem } from '@chakra-ui/react';
 import { SEARCH_TEAMS } from '../utils/queries';
 import SearchFormContainer from "../components/SearchFormContainer";
 import TeamList from "../components/TeamList";
+import MapContainer from "../components/MapContainer";
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
@@ -70,11 +71,12 @@ const Feed = () => {
 
   return (
     <div className="container" style={myStyle}>
-      <Grid templateColumns='repeat(2, 1fr)'>
-        <GridItem w='100%'>
+      <Grid templateColumns='repeat(5, 1fr)'>
+        <GridItem colSpan={2} w='100%'>
           <SearchFormContainer searchValues={searchValues} handleChange={handleChange} handleSubmit={handleSubmit} loading={called && loading} />
+          <MapContainer teams={teamList} />
         </GridItem>
-        <GridItem w='100%'>
+        <GridItem colSpan={3} w='100%'>
           <TeamList teams={teamList} />
         </GridItem>
       </Grid>

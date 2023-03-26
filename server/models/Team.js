@@ -39,7 +39,9 @@ const teamSchema = new mongoose.Schema({
       ref: 'User'
     }
   ],
-})
+}, {
+  timestamps: true,
+});
 const Team = mongoose.model('Team', teamSchema);
 
-module.exports = Team
+module.exports = Team;

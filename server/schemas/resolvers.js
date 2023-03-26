@@ -51,7 +51,7 @@ const resolvers = {
         query.team_zip_code = { $regex: new RegExp(team_zip_code, "i") };
       }
 
-      return Team.find(query).populate('captain').populate('members');
+      return Team.find(query).populate('captain').populate('members').sort({createdAt: 'desc'}).limit(5);
     },
     team: async (parent, { teamId }) => {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
