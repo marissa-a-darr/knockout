@@ -28,7 +28,7 @@ import { color } from "framer-motion";
     padding: "20px",
  
     fontFamily: "Lucida Console, Monaco, monospace",
-    height: "100vh"
+    minHeight: "100vh"
   }
   
 
