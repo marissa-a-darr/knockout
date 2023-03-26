@@ -5,7 +5,7 @@ const myStyle = {
   padding: "20px",
   fontSize: "20px",
   fontFamily: "Lucida Console, Monaco, monospace",
-  height: "100vh"
+  minHeight: "100vh"
 
 }
 const Chat = () => {

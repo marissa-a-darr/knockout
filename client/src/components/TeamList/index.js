@@ -13,7 +13,7 @@ const TeamList = ({ teams }) =>  {
     <div>
       <div className="addTeamContainer">
         <Center>
-          <div>Add a team if you cannot find one below.</div> <br />
+          <div>Add a team below!</div> <br />
         </Center>
         <Center>
           <Button colorScheme='teal' onClick={addTeamRedirect}>Add a Team</Button>

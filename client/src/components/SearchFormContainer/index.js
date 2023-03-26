@@ -4,6 +4,7 @@ import React from "react";
 const SearchFormContainer = ({ searchValues, handleChange, handleSubmit, loading }) =>  {
   return (
     <div className="searchFormContainer">
+      <h2>Filter</h2>
       <form onSubmit={handleSubmit}>
         <FormControl>
           <FormLabel>Team Name:</FormLabel>

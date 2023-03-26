@@ -23,7 +23,7 @@ code {
 
 }
 
-.addTeamFormContainer, .searchFormContainer {
+.addTeamFormContainer {
   margin: 30px;
   padding: 20px;
 }
@@ -36,4 +36,17 @@ code {
   width: 150px;
   margin-bottom: -50px;
   max-width: 150px;
+}
+
+.addTeamContainer, .teamListContainer, .searchFormContainer {
+  margin: 20px 10px;
+  padding: 20px;
+  border: solid;
+}
+
+.teamListTeamContainer {
+  margin: 10px 0px;
+  padding: 20px;
+  border: solid 1px;
+  border-radius: 12px;
 }

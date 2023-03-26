@@ -10,7 +10,7 @@ const myStyle = {
   padding: "20px",
   fontSize: "20px",
   fontFamily: "Lucida Console, Monaco, monospace",
-  height: "100vh"
+  minHeight: "100vh"
 
 }
 
@@ -70,7 +70,7 @@ const Feed = () => {
 
   return (
     <div className="container" style={myStyle}>
-      <Grid templateColumns='repeat(2, 1fr)' gap={6}>
+      <Grid templateColumns='repeat(2, 1fr)'>
         <GridItem w='100%'>
           <SearchFormContainer searchValues={searchValues} handleChange={handleChange} handleSubmit={handleSubmit} loading={called && loading} />
         </GridItem>
