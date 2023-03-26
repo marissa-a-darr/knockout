@@ -33,6 +33,26 @@ const resolvers = {
     teams: async () => {
       return Team.find().populate('captain').populate('members');
     },
+    searchTeams: async (parent, { name, sport, state, city, team_zip_code }) => {
+      let query = {};
+      if (name) {
+        query.name = { $regex: new RegExp(name, "i") };
+      }
+      if (sport) {
+        query.sport = { $regex: new RegExp(sport, "i") };
+      }
+      if (state) {
+        query.state = { $regex: new RegExp(state, "i") };
+      }
+      if (city) {
+        query.city = { $regex: new RegExp(nacityme, "i") };
+      }
+      if (team_zip_code) {
+        query.team_zip_code = { $regex: new RegExp(team_zip_code, "i") };
+      }
+
+      return Team.find(query).populate('captain').populate('members');
+    },
     team: async (parent, { teamId }) => {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
     },

@@ -38,6 +38,7 @@ const typeDefs = gql`
     user(username: String!): User
     sports: [Sport]
     teams: [Team]
+    searchTeams(name: String, sport: String, state: String, city: String, team_zip_code: Int): [Team]
     team(teamId: ID!): Team
     me(username: String!): User
   }

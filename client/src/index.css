@@ -23,7 +23,7 @@ code {
 
 }
 
-.addTeamFormContainer {
+.addTeamFormContainer, .searchFormContainer {
   margin: 30px;
   padding: 20px;
 }

@@ -33,7 +33,6 @@ const AddTeamForm = () =>  {
       team_zip_code: Number(zip),
       captain: user.email
     }
-    console.log(team);
     try {
       const { data } = await addTeam({
         variables: team

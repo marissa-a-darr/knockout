@@ -1,74 +1,34 @@
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { useAuth0 } from "@auth0/auth0-react";
-import React, { useState } from "react";
-import { useMutation } from '@apollo/client';
-import { ADD_TEAM } from '../../utils/mutations';
+import React from "react";
 
-
-const AddTeamForm = () =>  {
-  const { user } = useAuth0();
-  const [name, setName] = useState('');
-  const [sport, setSport] = useState('');
-  const [state, setState] = useState('');
-  const [city, setCity] = useState('');
-  const [zip, setZip] = useState('');
-  let isSubmitting = false;
-
-  const handleNameChange = (event) => setName(event.target.value);
-  const handleSportChange = (event) => setSport(event.target.value);
-  const handleStateChange = (event) => setState(event.target.value);
-  const handleCityChange = (event) => setCity(event.target.value);
-  const handleZipChange = (event) => setZip(event.target.value);
-
-  const [addTeam, { error }] = useMutation(ADD_TEAM);
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    isSubmitting = true;
-    const team = {
-      name,
-      sport,
-      state,
-      city,
-      zip,
-      captain: user.email
-    }
-    console.log(team);
-    const { data } = await addTeam({
-      variables: team
-    });
-    console.log(data);
-    isSubmitting = false
-  }
-
+const SearchFormContainer = ({ searchValues, handleChange, handleSubmit, loading }) =>  {
   return (
-    <div className="addTeamFormContainer">
+    <div className="searchFormContainer">
       <form onSubmit={handleSubmit}>
-        <FormControl isRequired>
+        <FormControl>
           <FormLabel>Team Name:</FormLabel>
-          <Input placeholder="Team Name" value={name} name="name" onChange={handleNameChange} />
+          <Input placeholder="Team Name" value={searchValues.name} name="name" onChange={handleChange.handleNameChange} />
         </FormControl>
-        <FormControl isRequired>
+        <FormControl>
           <FormLabel>Sport:</FormLabel>
-          <Input placeholder="Sport" value={sport} name="sport" onChange={handleSportChange} />
+          <Input placeholder="Sport" value={searchValues.sport} name="sport" onChange={handleChange.handleSportChange} />
         </FormControl>
         <FormControl>
           <FormLabel>State:</FormLabel>
-          <Input placeholder="State" value={state} name="state" onChange={handleStateChange} />
+          <Input placeholder="State" value={searchValues.state} name="state" onChange={handleChange.handleStateChange} />
         </FormControl>
         <FormControl>
           <FormLabel>City:</FormLabel>
-          <Input placeholder="City" value={city} name="city" onChange={handleCityChange} />
+          <Input placeholder="City" value={searchValues.city} name="city" onChange={handleChange.handleCityChange} />
         </FormControl>
         <FormControl>
           <FormLabel>Zip Code:</FormLabel>
-          <Input placeholder="Zip Code" value={zip} name="team_zip_code" onChange={handleZipChange} />
+          <Input placeholder="Zip Code" value={searchValues.zip} name="team_zip_code" onChange={handleChange.handleZipChange} />
         </FormControl>
-        <Button mt={4} colorScheme='teal' isLoading={isSubmitting} type='submit'>Add Team</Button>
       </form>
     </div>
   );
 
 }
 
-export default AddTeamForm;
+export default SearchFormContainer;
