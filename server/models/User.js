@@ -14,7 +14,7 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   zip: {
-    type: Number,
+    type: String,
     required: false,
     min: 00000
   },

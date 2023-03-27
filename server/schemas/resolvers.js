@@ -1,6 +1,11 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { User, Sport, Team } = require('../models');
 const { signToken } = require('../utils/auth');
+const NodeGeocoder = require('node-geocoder');
+
+const calculateTeamsWithinRadius = (teams, latitude, longitude, radius) => {
+  return teams;
+}
 
 const resolvers = {
   Query: {
@@ -33,7 +38,7 @@ const resolvers = {
     teams: async () => {
       return Team.find().populate('captain').populate('members');
     },
-    searchTeams: async (parent, { name, sport, state, city, team_zip_code }) => {
+    searchTeams: async (parent, { name, sport, state, city, team_zip_code, latitude, longitude, radius }) => {
       let query = {};
       if (name) {
         query.name = { $regex: new RegExp(name, "i") };
@@ -51,7 +56,32 @@ const resolvers = {
         query.team_zip_code = { $regex: new RegExp(team_zip_code, "i") };
       }
 
-      return Team.find(query).populate('captain').populate('members').sort({createdAt: 'desc'}).limit(5);
+      console.log(latitude, longitude, radius);
+
+      const allTeams = await Team.find(query).populate('captain').populate('members').sort({createdAt: 'desc'});
+
+      console.log('Google Maps API Key', process.env.GOOGLE_MAPS_API_KEY);
+      const geocoder = NodeGeocoder({
+        provider: 'google',
+        apiKey: process.env.GOOGLE_MAPS_API_KEY
+      });
+
+      let teams = [];
+      for (let i = 0; i < allTeams.length; i++) {
+          let team = allTeams[i];
+          const address = `${team.address}, ${team.city}, ${team.state} ${team.team_zip_code}`;
+          const geocode = await geocoder.geocode(address);
+          team.location = {
+            lat: geocode[0].latitude,
+            lng: geocode[0].longitude,
+          }
+          teams.push(team)
+      };
+
+      if (latitude && longitude && radius) {
+        return calculateTeamsWithinRadius(teams, latitude, longitude, radius);
+      }
+      return teams;
     },
     team: async (parent, { teamId }) => {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
@@ -105,9 +135,7 @@ const resolvers = {
       const sport = await Sport.create({ name });
       return sport;
     },
-    addTeam: async (parent, { name, sport, state, city, team_zip_code, captain }, context) => {
-      console.log('I was hit!')
-      console.log(captain);
+    addTeam: async (parent, { name, sport, address, state, city, team_zip_code, captain }, context) => {
       let user = await User.findOne({ username: captain });
       if (!user) {
         user = await User.create({
@@ -122,6 +150,7 @@ const resolvers = {
       const team = await Team.create({
         name,
         sport,
+        address,
         state,
         city,
         team_zip_code,
