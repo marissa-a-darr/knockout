@@ -1,11 +1,13 @@
 import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useAuth0 } from "@auth0/auth0-react";
+import { useNavigate } from 'react-router-dom';
 import React, { useState } from "react";
 import { useMutation } from '@apollo/client';
 import { ADD_TEAM } from '../../utils/mutations';
 
 
 const AddTeamForm = () =>  {
+  const navigate = useNavigate();
   const { user } = useAuth0();
   const [name, setName] = useState('');
   const [sport, setSport] = useState('');
@@ -47,7 +49,7 @@ const AddTeamForm = () =>  {
       console.log(err);
     }
     isSubmitting = false;
-    window.open('/feed');
+    navigate('/feed', { replace: true });
   }
 
   return (

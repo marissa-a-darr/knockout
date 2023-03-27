@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import {  Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button,  FormControl,  Input, FormLabel, Textarea } from "@chakra-ui/react";
 import { useMutation, useQuery } from '@apollo/client';
 import { EDIT_PROFILE } from '../utils/mutations';
@@ -14,6 +14,7 @@ color: "white",
 }
 
 const EditProfile = () => {
+  const navigate = useNavigate();
   const {user} = useAuth0();
   const username = user?.email || user?.nickname || '';
   const { data } = useQuery(QUERY_MYTEAMS, {
@@ -69,12 +70,12 @@ const EditProfile = () => {
       console.log(err);
     }
     isSubmitting = false;
-    window.open('/profile');
+    navigate('/profile', { replace: true });
   }
 
   const cancelChanges = (event) => {
     event.preventDefault();
-    window.open('/profile');
+    navigate('/profile', { replace: true });
   }
 
   useEffect(() => {
