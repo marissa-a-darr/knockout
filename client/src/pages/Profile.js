@@ -53,6 +53,11 @@ const Profile = () => {
 <br />
 
         <Text fontSize={"30px"} color={"white"}> My Teams: </Text>
+        <Link to="/feed" style={{ color: "#000000" }}>
+              <Button>Check Teams</Button>
+            </Link>
+            <br />
+            <br />
        <MyTeamList teams={myTeams}></MyTeamList>
        <Link to="/edit_profile" style={{ color: "#000000" }}>
               <Button className="editProfileButton" colorScheme="teal">Edit Profile</Button>
