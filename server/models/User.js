@@ -23,6 +23,11 @@ const userSchema = new mongoose.Schema({
     trim: true,
     required: false
   },
+  name: {
+    type: String,
+    trim: true,
+    required: false
+  },
   username: {
     type: String,
     trim: true,
