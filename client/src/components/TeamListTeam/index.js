@@ -77,7 +77,12 @@ const TeamListTeam = ({ username, team, myTeams }) => {
         </ListItem>
         <ListItem>Sport: {team.sport}</ListItem>
         <ListItem>Location: {team.city}, {team.state} {team.team_zip_code}</ListItem>
-        <ListItem>Captain: {team.captain.username}</ListItem>
+        <ListItem>Captain: {team.captain.name ? (
+            <span>{team.captain.name}, {team.captain.username}</span>
+          ) : (
+            <span>{team.captain.username}</span>
+          )
+        }</ListItem>
       </List>
     </div>
   )

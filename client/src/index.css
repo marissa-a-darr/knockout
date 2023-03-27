@@ -247,3 +247,8 @@ option {
 .bioSection {
   padding: 20px;
 }
+
+.cancelProfileChanges {
+  color: darkslategray;
+  margin-left: 20px;
+}

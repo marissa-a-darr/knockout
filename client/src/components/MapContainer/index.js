@@ -55,7 +55,12 @@ const MapContainer = ({ teams, currentPosition, setCurrentPosition }) => {
                     <ul>
                       <li>Name: {selected.name}</li>
                       <li>Address: {selected.address}, {selected.city}, {selected.state} {selected.team_zip_code}</li>
-                      <li>Captain: {selected.captain.username}</li>
+                      <li>Captain: {selected.captain.name ? (
+                        <span>{selected.captain.name}, {selected.captain.username}</span>
+                      ) : (
+                        <span>{selected.captain.username}</span>
+                      )
+                      }</li>
                     </ul>
                   </div>
                 </InfoWindowF>
