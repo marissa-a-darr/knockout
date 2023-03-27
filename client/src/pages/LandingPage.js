@@ -1,5 +1,4 @@
 import React from "react";
-import LoginButton from "../components/Nav/LoginButton";
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
@@ -10,13 +9,12 @@ const myStyle = {
 
 }
 
-const Feed = () => {
+const LandingPage = () => {
   return (
     <div className="container" style={myStyle}>
       <h1>Welcome to Knockout! Please Login</h1>
-      <LoginButton />
     </div>
   );
 };
 
-export default Feed;
+export default LandingPage;
