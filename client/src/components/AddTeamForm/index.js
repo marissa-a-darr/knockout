@@ -10,6 +10,7 @@ const AddTeamForm = () =>  {
   const [name, setName] = useState('');
   const [sport, setSport] = useState('');
   const [state, setState] = useState('');
+  const [address, setAddress] = useState('');
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
   let isSubmitting = false;
@@ -17,6 +18,7 @@ const AddTeamForm = () =>  {
   const handleNameChange = (event) => setName(event.target.value);
   const handleSportChange = (event) => setSport(event.target.value);
   const handleStateChange = (event) => setState(event.target.value);
+  const handleAddressChange = (event) => setAddress(event.target.value);
   const handleCityChange = (event) => setCity(event.target.value);
   const handleZipChange = (event) => setZip(event.target.value);
 
@@ -28,11 +30,13 @@ const AddTeamForm = () =>  {
     const team = {
       name,
       sport,
+      address,
       state,
       city,
-      team_zip_code: Number(zip),
+      team_zip_code: zip,
       captain: user.email
     }
+    console.log('Team to add', team);
     try {
       const { data } = await addTeam({
         variables: team
@@ -58,12 +62,16 @@ const AddTeamForm = () =>  {
           <Input placeholder="Sport" value={sport} name="sport" onChange={handleSportChange} />
         </FormControl>
         <FormControl>
-          <FormLabel>State:</FormLabel>
-          <Input placeholder="State" value={state} name="state" onChange={handleStateChange} />
+          <FormLabel>Address:</FormLabel>
+          <Input placeholder="Address" value={address} name="address" onChange={handleAddressChange} />
         </FormControl>
         <FormControl>
           <FormLabel>City:</FormLabel>
           <Input placeholder="City" value={city} name="city" onChange={handleCityChange} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>State:</FormLabel>
+          <Input placeholder="State" value={state} name="state" onChange={handleStateChange} />
         </FormControl>
         <FormControl>
           <FormLabel>Zip Code:</FormLabel>

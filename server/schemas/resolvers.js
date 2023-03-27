@@ -25,8 +25,7 @@ const calculateTeamsWithinRadius = (teams, latitude, longitude, radius) => {
   let resultTeams = [];
   teams.forEach(team => {
     const distance = getDistance(latitude, longitude, team.location.lat, team.location.lng);
-    console.log('Team', team.name);
-    console.log('Distance', distance);
+    console.log(distance);
     if (distance <= radius) {
       resultTeams.push(team);
     }
@@ -73,15 +72,19 @@ const resolvers = {
       if (sport) {
         query.sport = { $regex: new RegExp(sport, "i") };
       }
-      if (state) {
+      console.log(state);
+      console.log((state && !(radius < 100000000 && (city || team_zip_code))));
+      if (state && !(radius < 100000000 && (city || team_zip_code))) {
         query.state = { $regex: new RegExp(state, "i") };
       }
-      if (city) {
-        query.city = { $regex: new RegExp(nacityme, "i") };
+      if (city && !(radius < 100000000)) {
+        query.city = { $regex: new RegExp(city, "i") };
       }
-      if (team_zip_code) {
+      if (team_zip_code && !(radius < 100000000)) {
         query.team_zip_code = { $regex: new RegExp(team_zip_code, "i") };
       }
+
+      console.log(query);
 
       console.log(latitude, longitude, radius);
 
@@ -106,12 +109,20 @@ const resolvers = {
       };
 
       if (radius < 100000000) {
-        if (team_zip_code) {
-          const address = `${team_zip_code}`;
+        if (state && !city && !team_zip_code) {
+          console.log('ONLY STATE');
+          return teams;
+        }
+        if (team_zip_code || city || state) {
+          const address = `${city}, ${state} ${team_zip_code}`;
           try {
             const g2 = await geocoder.geocode(address);
-            latitude = g2[0].latitude;
-            longitude = g2[0].longitude;
+            console.log('G2', g2);
+            if (g2[0]) {
+              latitude = g2[0].latitude;
+              longitude = g2[0].longitude;
+              console.log('New Lat & Long', latitude, longitude);
+            }
           } catch (err) {
             console.error(err);
           }

@@ -20,9 +20,11 @@ const TeamList = ({ teams }) =>  {
         </Center>
       </div>
       <div className="teamListContainer">
-        {teams.map((team) => {
+        {teams.length > 0 ? (teams.map((team) => {
           return <TeamListTeam team={team} key={team._id} />
-        })}
+        })) : (
+          <Center>No teams found</Center>
+        )}
       </div>
     </div>
   )

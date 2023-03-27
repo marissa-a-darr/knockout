@@ -14,7 +14,6 @@ const Feed = () => {
   return (
     <div className="container" style={myStyle}>
       <h1>Welcome to Knockout! Please Login</h1>
-      <LoginButton />
     </div>
   );
 };

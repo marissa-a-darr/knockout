@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { FormControl, FormLabel, Input, Select } from "@chakra-ui/react";
 import React from "react";
 
 const SearchFormContainer = ({ searchValues, handleChange, handleSubmit, loading }) =>  {
@@ -25,6 +25,17 @@ const SearchFormContainer = ({ searchValues, handleChange, handleSubmit, loading
         <FormControl>
           <FormLabel>Zip Code:</FormLabel>
           <Input placeholder="Zip Code" value={searchValues.zip} name="team_zip_code" onChange={handleChange.handleZipChange} />
+        </FormControl>
+        <FormControl>
+          <FormLabel>Radius:</FormLabel>
+          <Select value={searchValues.radius} name="radius" onChange={handleChange.handleRadiusChange}>
+            <option value='100000000'>Any</option>
+            <option value='10'>10</option>
+            <option value='25'>25</option>
+            <option value='50'>50</option>
+            <option value='100'>100</option>
+            <option value='200'>200</option>
+          </Select>
         </FormControl>
       </form>
     </div>
