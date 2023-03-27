@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Sport {
@@ -10,19 +10,29 @@ const typeDefs = gql`
     _id: ID!
     currently_available: Boolean
     state: String
-    zip: Int
+    zip: String
     city: String
+    name: String
     username: String
     password: String
     teams: [Team]!
+    bio: String
+  }
+
+  type Location {
+    lat: Float
+    lng: Float
   }
 
   type Team {
     _id: ID!
+    name: String
     sport: String
+    address: String
     state: String
     city: String
-    team_zip_code: Int
+    team_zip_code: String
+    location: Location
     captain: User
     members: [User]!
   }
@@ -37,16 +47,39 @@ const typeDefs = gql`
     user(username: String!): User
     sports: [Sport]
     teams: [Team]
+    searchTeams(name: String, sport: String, state: String, city: String, team_zip_code: String, latitude: Float, longitude: Float, radius: Int): [Team]
     team(teamId: ID!): Team
-    me: User
+    me(username: String!): User
   }
 
   type Mutation {
-    addUser(username: String!, password: String!, state: String!, zip: Int!, city: String!): Auth
+    addUser(
+      username: String!
+      password: String
+      state: String
+      zip: String
+      city: String
+    ): Auth
+    editUser(
+      username: String!
+      name: String
+      state: String
+      city: String
+      zip: String
+      bio: String
+    ): Auth
     login(username: String!, password: String!): Auth
     addSport(name: String!): Sport
-    addTeam(name: String!, sport: String!, state: String!, city: String!, team_zip_code: Int!): Team
-    leaveTeam(teamId: ID!): Team
+    addTeam(
+      name: String!
+      sport: String!, address: String!
+      state: String!
+      city: String!
+      team_zip_code: String!
+      captain: String!
+    ): Team
+    joinTeam(teamId: ID!, username: String!): User
+    leaveTeam(teamId: ID!, username: String!): User
     removeTeam(teamId: ID!): Auth
     removeSport(sportId: ID!): Auth
   }

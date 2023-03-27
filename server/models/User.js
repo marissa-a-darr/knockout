@@ -1,26 +1,32 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcrypt');
 
 const {Schema} = mongoose;
 const userSchema = new mongoose.Schema({
   currently_available : {
     type: Boolean,
-    default: true,
+    default: false,
     required: true
   },
   state: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   zip: {
-    type: Number,
-    required: true,
+    type: String,
+    required: false,
     min: 00000
   },
   city: {
     type: String,
     trim: true,
-    required: true
+    required: false
+  },
+  name: {
+    type: String,
+    trim: true,
+    required: false
   },
   username: {
     type: String,
@@ -29,15 +35,19 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
-    minlength: 5
+    required: false,
   },
   teams: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Team'
     }
-  ]
+  ],
+  bio: {
+    type: String,
+    trim: false,
+    required: false
+  },
 });
 userSchema.pre('save', async function(next) {
   if (this.New || this.isModified('password')) {
