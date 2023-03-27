@@ -4,7 +4,7 @@ import ChatPage from '../components/ChatContatiner/ChatPage';
 import socketIO from 'socket.io-client';
 // import NewWindow from 'react-new-window';
 
-const socket = socketIO.connect('http://localhost:3001');
+const socket = socketIO.connect('https://knockout-app.herokuapp.com/');
 // window.addEventListener("beforeunload", (ev) => 
 // {  
 //     console.log("window is being close");
