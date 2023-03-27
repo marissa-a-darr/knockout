@@ -18,7 +18,7 @@ const TeamList = ({ teams }) =>  {
   const myTeams = me?.teams || [];
 
   const addTeamRedirect = () => {
-    navigate('/about', { replace: true });
+    navigate('/add_team', { replace: true });
   }
 
   console.log('Teams', teams);
