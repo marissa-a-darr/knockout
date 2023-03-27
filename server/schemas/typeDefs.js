@@ -1,4 +1,4 @@
-const { gql } = require('apollo-server-express');
+const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
   type Sport {
@@ -12,9 +12,11 @@ const typeDefs = gql`
     state: String
     zip: String
     city: String
+    name: String
     username: String
     password: String
     teams: [Team]!
+    bio: String
   }
 
   type Location {
@@ -51,10 +53,31 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    addUser(username: String!, password: String, state: String, zip: String, city: String): Auth
+    addUser(
+      username: String!
+      password: String
+      state: String
+      zip: String
+      city: String
+    ): Auth
+    editUser(
+      username: String!
+      name: String
+      state: String
+      city: String
+      zip: String
+      bio: String
+    ): Auth
     login(username: String!, password: String!): Auth
     addSport(name: String!): Sport
-    addTeam(name: String!, sport: String!, address: String!, state: String!, city: String!, team_zip_code: String!, captain: String!): Team
+    addTeam(
+      name: String!
+      sport: String!, address: String!
+      state: String!
+      city: String!
+      team_zip_code: String!
+      captain: String!
+    ): Team
     joinTeam(teamId: ID!, username: String!): User
     leaveTeam(teamId: ID!, username: String!): User
     removeTeam(teamId: ID!): Auth

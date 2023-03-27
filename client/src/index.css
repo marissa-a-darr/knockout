@@ -205,3 +205,11 @@ option {
 .joinTeamButton, .leaveTeamButton {
   float: right;
 }
+
+.editProfileButton, .bioSection{
+  margin: 30px 0;
+}
+
+.bioSection {
+  padding: 20px;
+}

@@ -19,45 +19,30 @@ const myStyle = {
   height: "100vh",
 };
 
-const TeamList = (teams) => {
-  if (!teams.length) {
-    return (
-      <div>
-        <Text fontSize={"30px"} color={"white"}>
-          No Teams Yet!
-        </Text>
-      </div>
-    );
-  }
-};
-
 const MyTeamList = ({ teams }) => {
   return (
     <div>
-      {teams &&
-        teams.map((team) => (
-          <div key={team._id}>
-            <TableContainer>
-              <Table variant="simple" color={"white"}>
-                <Thead>
-                  <Tr>
-                    <Th>Team Name{team.name}</Th>
-                    <Th>City{team.city}</Th>
-                    <Th>Captain Name{team.captain.username}</Th>
-                  </Tr>
-                </Thead>
-                <Tbody>
-                  <Tr>
+      <TableContainer>
+        <Table variant="simple" color={"white"}>
+          <Thead>
+            <Tr>
+              <Th>Team Name</Th>
+              <Th>City</Th>
+              <Th>Captain Name</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            {teams &&
+              teams.map((team) => (
+                  <Tr key={team._id}>
                     <Td>{team.name}</Td>
                     <Td>{team.city}</Td>
                     <Td>{team.captain.username}</Td>
                   </Tr>
-                </Tbody>
-              </Table>
-            </TableContainer>
-           
-          </div>
-        ))}
+              ))}
+          </Tbody>
+        </Table>
+      </TableContainer>   
     </div>
   );
 };
