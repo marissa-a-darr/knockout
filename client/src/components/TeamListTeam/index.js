@@ -81,7 +81,6 @@ const TeamListTeam = ({ username, team, myTeams }) => {
       </List>
     </div>
   )
-
 }
 
 export default TeamListTeam;

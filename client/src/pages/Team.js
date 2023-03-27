@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useParams } from 'react-router-dom';
+
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
@@ -8,6 +9,7 @@ const myStyle = {
   fontFamily: "Lucida Console, Monaco, monospace",
   minHeight: "100vh"
 }
+
 const Team = () => {
   const { teamId } = useParams();
 

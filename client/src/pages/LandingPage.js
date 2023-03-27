@@ -12,7 +12,7 @@ const myStyle = {
 
 }
 
-const Feed = () => {
+const LandingPage = () => {
   const { user } = useAuth0();
   const { data } = useQuery(QUERY_MYTEAMS, {
     variables: {
@@ -22,6 +22,7 @@ const Feed = () => {
 
   const me = data?.me || {};
   console.log(me);
+
   return (
     <div className="container" style={myStyle}>
       <h1>Welcome to Knockout! Please Login</h1>
@@ -29,4 +30,4 @@ const Feed = () => {
   );
 };
 
-export default Feed;
+export default LandingPage;

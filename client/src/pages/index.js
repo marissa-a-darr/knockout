@@ -3,8 +3,8 @@ import Chat from "./Chat";
 import EditProfile from "./EditProfile";
 import EditTeam from "./EditTeam";
 import Feed from "./Feed";
-import Login from "./Login";
 import LandingPage from "./LandingPage";
+import MyTeamList from "./MyTeamList";
 import Profile from "./Profile";
 import Team from "./Team";
 import User from "./User";
@@ -15,9 +15,9 @@ export {
   EditProfile,
   EditTeam,
   Feed,
-  Login,
   LandingPage,
+  MyTeamList,
   Profile,
   Team,
-  User,
+  User
 };
