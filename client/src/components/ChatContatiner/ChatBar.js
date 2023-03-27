@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Logo from '../Nav/Logo';
+import BoxingGloves from '../Nav/BoxingGlovesImg';
 
 const ChatBar = ({ socket }) => {
   const [users, setUsers] = useState([]);
@@ -10,7 +10,7 @@ const ChatBar = ({ socket }) => {
 
   return (
     <div className="chat-sidebar">
-      <Logo w="10px" color={["white", "white", "primary.500", "primary.500"]} />
+      <BoxingGloves w="10px" color={["white", "white", "primary.500", "primary.500"]} />
       <div>
         <h4 className="chat-header">ACTIVE USERS</h4>
         <div className="chat-users">
