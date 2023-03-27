@@ -13,8 +13,8 @@ export const ADD_USER = gql`
 `;
 
 export const EDIT_PROFILE = gql`
-  mutation editUser($username: String!, $zip: Int){
-    editUser(username: $username, zip: $zip ){
+  mutation editUser($username: String!, $name: String, $state: String, $city: String, $zip: String, $bio: String){
+    editUser(username: $username, name: $name, state: $state, city: $city, zip: $zip, bio: $bio ){
       user {
         _id
         name

@@ -5,17 +5,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_MYTEAMS } from '../utils/queries';
 import MyTeamList from "./MyTeamList";
 import {
-  Table,
-  Thead,
-  Tbody,
-Text,
-  Tr,
-  Th,
-  Td,
-  TableContainer,
+  Text,
   Button,
   Image,
-  Textarea,
 } from '@chakra-ui/react';
 
 import { color } from "framer-motion";
