@@ -50,20 +50,13 @@ const Profile = () => {
 <Text className="bioSection" color={"White"} fontSize={"20px"} border={"2px solid white"}>
     {me?.bio || 'Loading'}
 </Text>
-<br />
-
-        <Text fontSize={"30px"} color={"white"}> My Teams: </Text>
-        <Link to="/feed" style={{ color: "#000000" }}>
-              <Button>Check Teams</Button>
-            </Link>
-            <br />
-            <br />
-       <MyTeamList teams={myTeams}></MyTeamList>
        <Link to="/edit_profile" style={{ color: "#000000" }}>
               <Button className="editProfileButton" colorScheme="teal">Edit Profile</Button>
             </Link>
             <br />
-            <br />
+        <Text fontSize={"30px"} color={"white"}> My Teams: </Text>
+        
+       <MyTeamList teams={myTeams}></MyTeamList>
         </div>
   );
 };
