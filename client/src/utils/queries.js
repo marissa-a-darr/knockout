@@ -7,6 +7,7 @@ query getMyTeams($username: String!) {
     state
     zip
     city
+    bio
     teams {
       _id
       name

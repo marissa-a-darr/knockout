@@ -242,17 +242,21 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    editUser: async (parent, {username, zip}  ) => {
-      await User.findOneAndUpdate(
+    editUser: async (parent, {username, name, state, city, zip, bio}  ) => {
+      const user = await User.findOneAndUpdate(
         {
           username: username,
         },
         {
-          username: username,
-          zip: zip
-         
+          name,
+          state,
+          city,
+          zip,
+          bio,
         }
       );
+      const token = signToken(user);
+      return { token, user};
     },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -277,10 +281,9 @@ const resolvers = {
       const sport = await Sport.create({ name });
       return sport;
     },
-    addTeam: async (parent, { name, sport, address, state, city, team_zip_code, captain }, context) => {
     addTeam: async (
       parent,
-      { name, sport, state, city, team_zip_code, captain },
+      { name, sport, address, state, city, team_zip_code, captain },
       context
     ) => {
       console.log("I was hit!");

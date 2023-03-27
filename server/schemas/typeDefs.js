@@ -12,9 +12,11 @@ const typeDefs = gql`
     state: String
     zip: String
     city: String
+    name: String
     username: String
     password: String
     teams: [Team]!
+    bio: String
   }
 
   type Location {
@@ -60,6 +62,9 @@ const typeDefs = gql`
     ): Auth
     editUser(
       username: String!
+      name: String
+      state: String
+      city: String
       zip: String
       bio: String
     ): Auth
