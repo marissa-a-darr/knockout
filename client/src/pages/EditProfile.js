@@ -6,9 +6,7 @@ color: "white",
   backgroundColor: "#000000",
   padding: "20px",
   fontFamily: "Lucida Console, Monaco, monospace",
-height: "100vh",
-
-
+  minHeight: "100vh"
 }
 
 const EditProfile = () => {

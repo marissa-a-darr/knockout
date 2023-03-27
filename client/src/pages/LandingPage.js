@@ -1,25 +1,33 @@
 import React from "react";
 import {Image} from "@chakra-ui/react";
 
+import { useAuth0 } from "@auth0/auth0-react";
+import { useQuery } from '@apollo/client';
+import { QUERY_MYTEAMS } from '../utils/queries';
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
   padding: "20px",
   fontSize: "20px",
   fontFamily: "Lucida Console, Monaco, monospace",
-  height: "100vh"
+  minHeight: "100vh"
 
 }
 
 const LandingPage = () => {
+  const { user } = useAuth0();
+  const { data } = useQuery(QUERY_MYTEAMS, {
+    variables: {
+      username: user?.email || user?.nickname || ''
+    }
+  });
+
+  const me = data?.me || {};
+  console.log(me);
+
   return (
     <div className="container" style={myStyle}>
-      <h1>Welcome to Knockout! Time to get playing</h1>
-      <Image
-        className="knockoutgif"
-        src={require("../images/knockout.gif")}
-        alt="homegif"
-      />
+      <h1>Welcome to Knockout! Please Login</h1>
     </div>
   );
 };

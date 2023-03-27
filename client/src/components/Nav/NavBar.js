@@ -3,13 +3,11 @@ import React from "react";
 import MenuLinks from "./MenuLinks";
 import Logo from "./Logo";
 import NavBarContainer from "./NavBarContainer";
+
 const NavBar = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
-  // const toggle = () => setIsOpen(!isOpen);
-
   return (
-    
     <NavBarContainer {...props}>
       <Logo w="10px" color={["white", "white", "primary.500", "primary.500"]} />
      
@@ -25,4 +23,5 @@ const NavBar = (props) => {
     </NavBarContainer>
   );
 };
+
 export default NavBar;

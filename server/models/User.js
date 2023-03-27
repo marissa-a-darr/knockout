@@ -14,14 +14,14 @@ const userSchema = new mongoose.Schema({
     trim: true
   },
   zip: {
-    type: Number,
+    type: String,
     required: false,
     min: 00000
   },
   city: {
     type: String,
-    trim: false,
-    required: true
+    trim: true,
+    required: false
   },
   username: {
     type: String,

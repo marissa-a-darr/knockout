@@ -10,20 +10,27 @@ const typeDefs = gql`
     _id: ID!
     currently_available: Boolean
     state: String
-    zip: Int
+    zip: String
     city: String
     username: String
     password: String
     teams: [Team]!
   }
 
+  type Location {
+    lat: Float
+    lng: Float
+  }
+
   type Team {
     _id: ID!
     name: String
     sport: String
+    address: String
     state: String
     city: String
-    team_zip_code: Int
+    team_zip_code: String
+    location: Location
     captain: User
     members: [User]!
   }
@@ -38,6 +45,7 @@ const typeDefs = gql`
     user(username: String!): User
     sports: [Sport]
     teams: [Team]
+    searchTeams(name: String, sport: String, state: String, city: String, team_zip_code: String, latitude: Float, longitude: Float, radius: Int): [Team]
     team(teamId: ID!): Team
     me(username: String!): User
   }
@@ -47,22 +55,22 @@ const typeDefs = gql`
       username: String!
       password: String
       state: String
-      zip: Int
+      zip: String
       city: String
     ): Auth
     editUser(
       username: String!
-      zip: Int
+      zip: String
       bio: String
     ): Auth
     login(username: String!, password: String!): Auth
     addSport(name: String!): Sport
     addTeam(
       name: String!
-      sport: String!
+      sport: String!, address: String!
       state: String!
       city: String!
-      team_zip_code: Int!
+      team_zip_code: String!
       captain: String!
     ): Team
     joinTeam(teamId: ID!, username: String!): User
