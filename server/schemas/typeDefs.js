@@ -15,6 +15,7 @@ const typeDefs = gql`
     username: String
     password: String
     teams: [Team]!
+    bio: String
   }
 
   type Location {
