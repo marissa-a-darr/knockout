@@ -37,7 +37,12 @@ const userSchema = new mongoose.Schema({
       type: Schema.Types.ObjectId,
       ref: 'Team'
     }
-  ]
+  ],
+  bio: {
+    type: String,
+    trim: false,
+    required: false
+  },
 });
 userSchema.pre('save', async function(next) {
   if (this.New || this.isModified('password')) {

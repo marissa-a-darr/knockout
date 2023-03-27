@@ -1,4 +1,6 @@
 import React from "react";
+import {Image} from "@chakra-ui/react";
+
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from '@apollo/client';
 import { QUERY_MYTEAMS } from '../utils/queries';
