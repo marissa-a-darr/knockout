@@ -202,4 +202,16 @@ code {
   bottom: 50px;
   font-size: 13px;
   font-style: italic;
+
+option {
+  color: black;
+}
+
+.mapInfoWindow li {
+  color: black;
+  padding: 4px;
+}
+
+.joinTeamButton, .leaveTeamButton {
+  float: right;
 }

@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
 
-
 const {Schema} = mongoose;
 const teamSchema = new mongoose.Schema({
   name : {
@@ -20,18 +19,23 @@ const teamSchema = new mongoose.Schema({
   },
   state: {
     type: String,
-    required: true,
+    required: false,
+    trim: true
+  },
+  address: {
+    type: String,
+    required: false,
     trim: true
   },
   city: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
   team_zip_code : {
-    type: Number,
-    required: true,
-    min: 00000
+    type: String,
+    required: false,
+    trim: true
   },
   members: [
     {
