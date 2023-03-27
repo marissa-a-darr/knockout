@@ -1,10 +1,12 @@
 import { Button, Center } from "@chakra-ui/react";
 import TeamListTeam from "../TeamListTeam";
+import { useNavigate } from 'react-router-dom';
 import { useAuth0 } from "@auth0/auth0-react";
 import { useQuery } from '@apollo/client';
 import { QUERY_MYTEAMS } from '../../utils/queries';
 
 const TeamList = ({ teams }) =>  {
+  const navigate = useNavigate();
   const { user } = useAuth0();
   const { data } = useQuery(QUERY_MYTEAMS, {
     variables: {
@@ -16,7 +18,7 @@ const TeamList = ({ teams }) =>  {
   const myTeams = me?.teams || [];
 
   const addTeamRedirect = () => {
-    window.location.assign('/add_team');
+    navigate('/add_team', { replace: true });
   }
 
   console.log('Teams', teams);

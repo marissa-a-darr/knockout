@@ -219,3 +219,7 @@ option {
   color: darkslategray;
   margin-left: 20px;
 }
+
+.navbar a {
+  color: #ceb92c;
+}

@@ -8,7 +8,7 @@ const NavBar = (props) => {
   const [isOpen, setIsOpen] = React.useState(false);
 
   return (
-    <NavBarContainer {...props}>
+    <NavBarContainer className="navbar" {...props}>
       <Logo w="10px" color={["white", "white", "primary.500", "primary.500"]} />
      
       <Stack
