@@ -1,13 +1,26 @@
 import { Button, Center } from "@chakra-ui/react";
 import TeamListTeam from "../TeamListTeam";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useQuery } from '@apollo/client';
+import { QUERY_MYTEAMS } from '../../utils/queries';
 
 const TeamList = ({ teams }) =>  {
+  const { user } = useAuth0();
+  const { data } = useQuery(QUERY_MYTEAMS, {
+    variables: {
+      username: user?.email || user?.nickname || ''
+    }
+  });
+
+  const me = data?.me || {};
+  const myTeams = me?.teams || [];
 
   const addTeamRedirect = () => {
     window.location.assign('/add_team');
   }
 
   console.log('Teams', teams);
+  console.log('Me', me);
   
   return (
     <div>
@@ -20,9 +33,11 @@ const TeamList = ({ teams }) =>  {
         </Center>
       </div>
       <div className="teamListContainer">
-        {teams.map((team) => {
-          return <TeamListTeam team={team} key={team._id} />
-        })}
+        {teams.length > 0 ? (teams.map((team) => {
+          return <TeamListTeam username={me.username} team={team} key={team._id} myTeams={myTeams} />
+        })) : (
+          <Center>No teams found</Center>
+        )}
       </div>
     </div>
   )

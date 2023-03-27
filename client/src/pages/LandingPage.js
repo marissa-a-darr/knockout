@@ -1,5 +1,7 @@
 import React from "react";
-import LoginButton from "../components/Nav/LoginButton";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useQuery } from '@apollo/client';
+import { QUERY_MYTEAMS } from '../utils/queries';
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
@@ -11,10 +13,18 @@ const myStyle = {
 }
 
 const Feed = () => {
+  const { user } = useAuth0();
+  const { data } = useQuery(QUERY_MYTEAMS, {
+    variables: {
+      username: user?.email || user?.nickname || ''
+    }
+  });
+
+  const me = data?.me || {};
+  console.log(me);
   return (
     <div className="container" style={myStyle}>
       <h1>Welcome to Knockout! Please Login</h1>
-      <LoginButton />
     </div>
   );
 };

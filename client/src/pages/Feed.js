@@ -21,6 +21,8 @@ const Feed = () => {
   const [state, setState] = useState('');
   const [city, setCity] = useState('');
   const [zip, setZip] = useState('');
+  const [radius, setRadius] = useState('100000000');
+  const [currentPosition, setCurrentPosition] = useState({});
   const [initialLoad, setInitialLoad] = useState(false);
 
   const handleNameChange = (event) => setName(event.target.value);
@@ -28,6 +30,7 @@ const Feed = () => {
   const handleStateChange = (event) => setState(event.target.value);
   const handleCityChange = (event) => setCity(event.target.value);
   const handleZipChange = (event) => setZip(event.target.value);
+  const handleRadiusChange = (event) => setRadius(event.target.value);
 
   const [ searchTeams, { called, loading, data } ] = useLazyQuery(SEARCH_TEAMS, {
     variables: {
@@ -35,7 +38,10 @@ const Feed = () => {
       sport,
       state,
       city,
-      team_zip_code: Number(zip),
+      team_zip_code: zip,
+      radius: Number(radius),
+      latitude: currentPosition.lat,
+      longitude: currentPosition.lng,
     }
   });
 
@@ -47,6 +53,7 @@ const Feed = () => {
     state,
     city,
     zip,
+    radius,
   }
 
   const handleChange = {
@@ -55,6 +62,7 @@ const Feed = () => {
     handleStateChange,
     handleCityChange,
     handleZipChange,
+    handleRadiusChange,
   }
 
   useEffect(() => {
@@ -62,7 +70,7 @@ const Feed = () => {
       searchTeams();
     }
     setInitialLoad(true);
-  }, [initialLoad, searchTeams])
+  }, [initialLoad, searchTeams]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -74,7 +82,7 @@ const Feed = () => {
       <Grid templateColumns='repeat(5, 1fr)'>
         <GridItem colSpan={2} w='100%'>
           <SearchFormContainer searchValues={searchValues} handleChange={handleChange} handleSubmit={handleSubmit} loading={called && loading} />
-          <MapContainer teams={teamList} />
+          <MapContainer teams={teamList} currentPosition={currentPosition} setCurrentPosition={setCurrentPosition} />
         </GridItem>
         <GridItem colSpan={3} w='100%'>
           <TeamList teams={teamList} />
