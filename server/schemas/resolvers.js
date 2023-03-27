@@ -277,10 +277,9 @@ const resolvers = {
       const sport = await Sport.create({ name });
       return sport;
     },
-    addTeam: async (parent, { name, sport, address, state, city, team_zip_code, captain }, context) => {
     addTeam: async (
       parent,
-      { name, sport, state, city, team_zip_code, captain },
+      { name, sport, address, state, city, team_zip_code, captain },
       context
     ) => {
       console.log("I was hit!");
