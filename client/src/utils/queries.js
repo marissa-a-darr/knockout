@@ -4,6 +4,7 @@ export const QUERY_MYTEAMS = gql`
 query getMyTeams($username: String!) {
   me(username: $username) {
     username
+    name
     state
     zip
     city
@@ -17,6 +18,7 @@ query getMyTeams($username: String!) {
       city
       captain {
         username
+        name
       }
     }
   }
@@ -39,10 +41,12 @@ query SEARCH_TEAMS($name: String, $sport: String, $state: String, $city: String,
     captain {
       _id
       username
+      name
     }
     members {
       _id
       username
+      name
     }
   }
 }`
