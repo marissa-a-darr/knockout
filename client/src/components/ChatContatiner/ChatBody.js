@@ -11,33 +11,33 @@ const ChatBody = ({ messages, lastMessageRef }) => {
 
   return (
     <>
-      <header className="chat__mainHeader">
-        <p>Hangout with Colleagues</p>
-        <button className="leaveChat__btn" onClick={handleLeaveChat}>
+      <header className="chat-mainHeader">
+        <p>My Team Hangout</p>
+        <button className="leaveChat-btn" onClick={handleLeaveChat}>
           LEAVE CHAT
         </button>
       </header>
 
-      <div className="message__container">
+      <div className="message-container">
         {messages.map((message) =>
           message.name === localStorage.getItem('userName') ? (
-            <div className="message__chats" key={message.id}>
-              <p className="sender__name">You</p>
-              <div className="message__sender">
+            <div className="message-chats" key={message.id}>
+              <p className="sender-name">You</p>
+              <div className="message-sender">
                 <p>{message.text}</p>
               </div>
             </div>
           ) : (
-            <div className="message__chats" key={message.id}>
+            <div className="message-chats" key={message.id}>
               <p>{message.name}</p>
-              <div className="message__recipient">
+              <div className="message-recipient">
                 <p>{message.text}</p>
               </div>
             </div>
           )
         )}
 
-        <div className="message__status">
+        <div className="message-status">
           {/* <p>{typingStatus}</p> */}
         </div>
         <div ref={lastMessageRef} />
