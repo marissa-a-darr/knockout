@@ -28,3 +28,29 @@ export const ADD_TEAM = gql`
     }
   }
 `;
+
+export const JOIN_TEAM = gql`
+  mutation joinTeam($teamId: ID!, $username: String!) {
+    joinTeam(teamId: $teamId, username: $username) {
+      _id
+      username
+      teams {
+        _id
+        name
+      }
+    }
+  }
+`;
+
+export const LEAVE_TEAM = gql`
+  mutation leaveTeam($teamId: ID!, $username: String!) {
+    leaveTeam(teamId: $teamId, username: $username) {
+      _id
+      username
+      teams {
+        _id
+        name
+      }
+    }
+  }
+`;

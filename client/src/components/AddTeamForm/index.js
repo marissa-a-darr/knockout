@@ -34,7 +34,7 @@ const AddTeamForm = () =>  {
       state,
       city,
       team_zip_code: zip,
-      captain: user.email
+      captain: user.email || user.nickname
     }
     console.log('Team to add', team);
     try {

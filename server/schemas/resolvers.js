@@ -135,8 +135,11 @@ const resolvers = {
       return Team.findOne({ _id: teamId }).populate('captain').populate('members');
     },
     me: async (parent, { username }, context) => {
+      console.log(username);
       let user =  await User.findOne({ username });
+      console.log('User', user);
       if (!user) {
+        try {
         user = await User.create({
           username: username,
           password: '',
@@ -144,6 +147,10 @@ const resolvers = {
           zip: null,
           city: ''
         });
+        } catch (err) {
+          console.log(err);
+        }
+        console.log('User Created', user);
       }
       
       const teams = await Team.find({
@@ -213,10 +220,10 @@ const resolvers = {
 
       return Team.findById(team._id).populate('captain').populate('members');
     },
-    joinTeam: async(parent, {teamdId, username}, context) => {
+    joinTeam: async(parent, {teamId, username}, context) => {
       const user = await User.findOneAndUpdate(
         { username: username },
-        { $addToSet: { teams: team._id }}
+        { $addToSet: { teams: teamId }}
       );
 
       const team = await Team.findOneAndUpdate(
@@ -237,7 +244,7 @@ const resolvers = {
     leaveTeam: async (parent, { teamId, username }, context) => {
       const user = await User.findOneAndUpdate(
         { username: username },
-        { $pull: { teams: team._id }}
+        { $pull: { teams: teamId }}
       );
 
       const team = await Team.findOneAndUpdate(

@@ -8,7 +8,10 @@ query getMyTeams($username: String!) {
     zip
     city
     teams {
+      _id
+      name
       sport
+      address
       state
       city
       captain {

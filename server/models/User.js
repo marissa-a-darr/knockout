@@ -20,8 +20,8 @@ const userSchema = new mongoose.Schema({
   },
   city: {
     type: String,
-    trim: false,
-    required: true
+    trim: true,
+    required: false
   },
   username: {
     type: String,
