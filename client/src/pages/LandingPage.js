@@ -1,5 +1,6 @@
 import React from "react";
-import LoginButton from "../components/Nav/LoginButton";
+import {Image} from "@chakra-ui/react";
+
 const myStyle = {
   color: "#ffffff",
   backgroundColor: "#000000",
@@ -10,13 +11,17 @@ const myStyle = {
 
 }
 
-const Feed = () => {
+const LandingPage = () => {
   return (
     <div className="container" style={myStyle}>
-      <h1>Welcome to Knockout! Please Login</h1>
-      <LoginButton />
+      <h1>Welcome to Knockout! Time to get playing</h1>
+      <Image
+        className="knockoutgif"
+        src={require("../images/knockout.gif")}
+        alt="homegif"
+      />
     </div>
   );
 };
 
-export default Feed;
+export default LandingPage;

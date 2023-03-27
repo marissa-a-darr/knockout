@@ -26,7 +26,6 @@ const Header = () => {
         <Route path="/chat" element={<Chat />} />
         <Route path="/edit_profile" element={<EditProfile />} />
         <Route path="/edit_team/:teamId" element={<EditTeam />} />
-        {/* <Route path="/login" element={<Login />} />  */}
         <Route path="/profile" element={<Profile />} />
         <Route path="/team/:teamId" element={<Team />} />
         <Route path="/add_team" element={<AddTeam />} />

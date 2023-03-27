@@ -1,11 +1,11 @@
 const db = require("./connection");
 const Sport = require("../models/Sport");
 const Team = require("../models/Team");
-const TeamMember = require("../models/TeamMember");
+// const TeamMember = require("../models/TeamMember");
 const User = require("../models/User");
 db.once("open", async () => {
   await Team.deleteMany();
-  await TeamMember.deleteMany();
+  // await TeamMember.deleteMany();
 
   await Sport.deleteMany();
 
