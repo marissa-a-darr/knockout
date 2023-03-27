@@ -69,12 +69,12 @@ const EditProfile = () => {
       console.log(err);
     }
     isSubmitting = false;
-    window.location.assign('/profile');
+    window.open('/profile');
   }
 
   const cancelChanges = (event) => {
     event.preventDefault();
-    window.location.assign('/profile');
+    window.open('/profile');
   }
 
   useEffect(() => {
