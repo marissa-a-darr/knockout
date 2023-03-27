@@ -47,7 +47,7 @@ const AddTeamForm = () =>  {
       console.log(err);
     }
     isSubmitting = false;
-    window.location.assign('/feed');
+    window.open('/feed');
   }
 
   return (
