@@ -5,7 +5,6 @@ import {
 } from '@chakra-ui/react';
 
 const TeamListTeam = ({ team }) => {
-
   return (
     <div className="teamListTeamContainer">
       <List spacing={3}>
@@ -16,7 +15,6 @@ const TeamListTeam = ({ team }) => {
       </List>
     </div>
   )
-
 }
 
 export default TeamListTeam;

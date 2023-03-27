@@ -7,15 +7,8 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import Nav from './components/Nav/Nav';
 import Header from './components/Nav/Header';
-
-
-import AuthenticationButton from './components/Nav/testingAuth';
-
-
 import { ChakraProvider } from '@chakra-ui/react';
-
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -35,18 +28,16 @@ const client = new ApolloClient({
   link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
+
 function App() {
   return (
-   <>
-   <ApolloProvider client={client}>
-   <ChakraProvider>
-    
-    <Header></Header>
-    
-   
-    </ChakraProvider>
+  <>
+    <ApolloProvider client={client}>
+      <ChakraProvider> 
+        <Header></Header>
+      </ChakraProvider>
     </ApolloProvider>
-    </>
+  </>
   );
 }
 
