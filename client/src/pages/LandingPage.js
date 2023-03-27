@@ -27,7 +27,10 @@ const LandingPage = () => {
 
   return (
     <div className="container" style={myStyle}>
-      <h1>Welcome to Knockout! Please Login</h1>
+      <h1>Welcome to Knockout! Time to get out and play!</h1>
+    
+      <Image width='300px' className="headerLogo" src={require("../images/knockout.gif")} alt="knockout home gif"/>
+  
     </div>
   );
 };
