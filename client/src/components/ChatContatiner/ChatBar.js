@@ -10,7 +10,7 @@ const ChatBar = ({ socket }) => {
 
   return (
     <div className="chat-sidebar">
-      <BoxingGloves w="10px" color={["white", "white", "primary.500", "primary.500"]} />
+      <BoxingGloves w="200px" color={["white", "white", "primary.500", "primary.500"]} />
       <div>
         <h4 className="chat-header">ACTIVE USERS</h4>
         <div className="chat-users">
