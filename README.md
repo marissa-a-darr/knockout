@@ -1,7 +1,6 @@
 
 # Knockout
-  ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg),
-  undefined,
+
   
 
   # Description: A Web Application used to locate and create sports teams in your area that were formed to bring the community together!
