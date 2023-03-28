@@ -237,10 +237,9 @@ const resolvers = {
   },
 
   Mutation: {
-    addUser: async (parent, { username, password, state, zip, city, bio }) => {
+    addUser: async (parent, { username, password, state, zip, city }) => {
       const user = await User.create({ username, password, state, zip, city });
-      const token = signToken(user);
-      return { token, user };
+      return user;
     },
     editUser: async (parent, {username, name, state, city, zip, bio}  ) => {
       const user = await User.findOneAndUpdate(
@@ -255,8 +254,7 @@ const resolvers = {
           bio,
         }
       );
-      const token = signToken(user);
-      return { token, user};
+      return user;
     },
     login: async (parent, { username, password }) => {
       const user = await User.findOne({ username });
@@ -369,9 +367,7 @@ const resolvers = {
         { $pull: { teams: team._id } }
       );
 
-      const token = signToken(user);
-
-      return { token, user };
+      return user;
     },
     removeSport: async (parent, { sportId }, context) => {
       return Sport.findOneAndDelete({ _id: sportId });

@@ -59,7 +59,7 @@ const typeDefs = gql`
       state: String
       zip: String
       city: String
-    ): Auth
+    ): User
     editUser(
       username: String!
       name: String
@@ -67,7 +67,7 @@ const typeDefs = gql`
       city: String
       zip: String
       bio: String
-    ): Auth
+    ): User
     login(username: String!, password: String!): Auth
     addSport(name: String!): Sport
     addTeam(
@@ -80,8 +80,8 @@ const typeDefs = gql`
     ): Team
     joinTeam(teamId: ID!, username: String!): User
     leaveTeam(teamId: ID!, username: String!): User
-    removeTeam(teamId: ID!): Auth
-    removeSport(sportId: ID!): Auth
+    removeTeam(teamId: ID!): User
+    removeSport(sportId: ID!): User
   }
 `;
 
